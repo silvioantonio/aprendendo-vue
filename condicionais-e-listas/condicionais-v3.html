@@ -1,0 +1,23 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <template v-if="logado">
+        <P>Usuario Logado: {{nome}}</P>
+        <p>Perfil: Admin</p>
+    </template>
+    <p v-else-if="anonimo">Navegando como Anônimo</p>
+    <P v-else>Nenhum usuario logado</P>
+    <button @click="logado = !logado">{{logado ? 'sair' : 'entrar'}}</button>
+    <input type="checkbox" v-model="anonimo">
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            nome: 'Teste',
+            logado: false,
+            anonimo: true
+        }
+    })
+</script>

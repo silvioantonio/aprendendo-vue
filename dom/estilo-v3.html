@@ -1,0 +1,48 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+    #app{
+        display: flex;
+        justify-content: space-around;
+    }
+    .demo{
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+    .c1{
+        background-color: red;
+    }
+    .c2{
+        background-color: blue;
+    }
+    .c3{
+        background-color: green;
+    }
+</style>
+
+<div id="app">
+    <p class="demo" :class="estilo1" @click="mudar = !mudar"></p>
+    <p class="demo"></p>
+    <p class="demo" :class="classeCSS"></p>
+    <hr>
+    <input type="text" v-model="classeCSS">
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            mudar: false,
+            classeCSS: 'c1'
+        },
+        computed:{
+            estilo1(){
+                return {
+                    c1: this.mudar,
+                    c2: !this.mudar
+                }
+            }
+        }
+    })
+</script>

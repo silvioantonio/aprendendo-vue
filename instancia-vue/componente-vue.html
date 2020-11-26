@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <componente></componente>
+</div>
+
+<script>
+
+    Vue.component('componente', {
+        template:`<div><h1>Componente</h1><h2>{{nome}}</h2></div>`,
+        data: function() {
+            return {
+                nome: 'teste 1',
+            }
+        },
+        methods: {
+            alterar(){
+                this.nome += '!'
+            }
+        },
+    })
+
+    const vm = new Vue({
+        el: '#app',
+    })
+</script>

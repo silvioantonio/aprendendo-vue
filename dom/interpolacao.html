@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!-- Aqui é uma INTERPOLAÇÃO (ESTA DENTRO DO {{}}) -->
+    <p>{{ contador }}</p>
+
+    <!-- Passando pequenas logicas atravez da interpolaçao -->
+    <p>{{ contador > 10 ? 'Maior do que 10' : 'Menor do que 10' }}</p>
+    <button v-on:click="somar">Somar 1</button>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            contador: 0,
+        },
+        methods:{
+            somar(numero, evento){
+                this.contador++
+            },
+        }
+    })
+</script>

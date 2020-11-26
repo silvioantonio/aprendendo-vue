@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+
+    <ul>
+        <li v-for="pessoa in pessoas">
+            <span>Nome: {{pessoa.nome}}, Idade: {{pessoa.idade}}</span>
+            <template v-if="pessoa.hasOwnProperty('contas')">
+                <ul>
+                <li v-for="(conta, indice) in pessoa.contas" :style="[conta.ativo ? {backgroundColor: 'green'} : {backgroundColor: cor}]">
+                        Conta: {{conta.numero}} - {{conta.ativo ? 'ATIVO' : 'INATIVO'}}
+                    </li>
+                </ul>
+            </template>
+            <template v-else>
+                <p>Usuario não possui contas!</p>
+            </template>
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            pessoas:[
+                {nome: 'Teste 1', idade: 20, 
+                    contas: [
+                        {numero: 01, ativo: false}
+                    ]
+                },
+                {nome: 'Teste 2', idade: 13},
+                {nome: 'Teste 3', idade: 27, 
+                    contas: [
+                        {numero: 01, ativo: false}
+                    ]
+                },
+                {nome: 'Teste 4', idade: 55, 
+                    contas: [
+                        {numero: 01, ativo: false},
+                        {numero: 02, ativo: true}
+                    ]
+                },
+                {nome: 'Teste 5', idade: 18, 
+                    contas: [
+                        {numero: 01, ativo: false}
+                    ]
+                }
+            ],
+            cor: 'red'
+        },
+    })
+</script>

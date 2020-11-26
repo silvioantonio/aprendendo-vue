@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <!--O segundo elemento é sempre o indice-->
+        <li v-for="(cor, indice) in cores">{{ indice }} - {{ cor }}</li>
+    </ul>
+    <template v-for="(cor, i) in cores">
+        <h1>{{cor}}</h1>
+        <p>{{i}}</p>
+    </template>
+    <hr>
+    <ul>
+        <li v-for="pessoa in pessoas">
+            {{pessoa.nome}}
+            <span v-for="(valor, chave, indice) in pessoa">
+                {{indice}} - {{chave}} = {{valor}}
+            </span>
+        </li>
+    </ul>
+    <hr>
+    <span v-for="n in 10">
+        {{n}}
+    </span>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            cores: ['vermelho', 'verde', 'amarelo', 'azul'],
+            pessoas: [{nome: 'Ana', idade: 26 }, {nome: 'Pedro', idade: 27 }]
+        }
+    })
+</script>
+<style>
+    ul{
+        list-style: none;
+    }
+</style>

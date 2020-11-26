@@ -1,0 +1,39 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ contador }}</p>
+    <button v-on:click="somar(5, $event)">Somar 1</button>
+    <p v-on:mousemove="atualizarXY">
+        Mouse: {{ x }} e {{ y }}
+        <span v-on:mousemove.stop="">PARAR O EVENTO AQUI</span>
+    </p>
+    <a v-on:click.prevent href="http://google.com">link</a>
+    <br>
+    <!-- Utilizando os modificadores de evento, nesse caso o enter -->
+    <!-- Eles podem ser encadeados ex: v-on:keyup.enter.prevent  -->
+    <input type="text" v-on:keyup.enter="exibirAlerta"> 
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            contador: 0,
+            x: 1,
+            y: 1
+        },
+        methods:{
+            somar(numero, evento){
+                console.log(evento)
+                this.contador += numero
+            },
+            atualizarXY(event){
+                this.x = event.x
+                this.y = event.y
+            },
+            exibirAlerta(){
+                alert('Alertado')
+            }
+        }
+    })
+</script>
